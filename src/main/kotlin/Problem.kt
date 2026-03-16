@@ -19,7 +19,7 @@ data class Problem(
             appendLine("graph TD")
             stations.keys.sorted().forEach { id ->
                 val (unload, load) = stations[id]!!
-                appendLine("    $id(\"$id\\n-$unload +$load\")")
+                appendLine("    $id(\"$id<br>-$unload +$load\")")
             }
             tracks.keys.sorted().forEach { from ->
                 tracks[from]?.sorted()?.forEach { to ->
