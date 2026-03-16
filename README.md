@@ -84,6 +84,90 @@ The following input defines a simple chain of stations (1 -> 2 -> 3).
 Steps: 3
 ```
 
+### Complex Example
+
+The graph visualized:
+[![](https://mermaid.ink/img/pako:eNptk02PmzAQhv8Kmr20WhIxtrGxD710r731VHFBxWzQ8hERUHcb5b93MBiMujnleewZ5h3Jd_jdlxYMvA7F9RL9fMm7iH74JQfM8-4ko2fM4etiGVk2W0ZWbJqT5utlxjYtSItZo6Lru0_Jp85r8snmJXnpuifk1eYVeeXv7zojnc2aLNu7aNLa3ebURW4ekzlS4k7YYU50YV1azOhkP5jzogssoud093Ng5L5gXwTOkdFlVuGoGJ1O3yIRAn0vJH6g9SZzlK1b-x8ozbK4hUJQ6-rCIu2AhZCGIENQIRwaaL_PT8hP5NGHxHBCPK6DhWOtJA-UHWjbFT8ULuTPxCfkh7uNH42lMFXdNOap0lV8G4f-zZonzvn6__SnLseLEdd3iOlp1CWYcZhsDK0d2mJGuM_dchgvtrU5GPpb2qqYmjGHvHtQ2bXofvV96yuHfnq9gKmK5kY0XctitC91Qe-u3exgu9IO3_upG8FgmrkmYO7wTqjTM6KSMkkZEzLRIoYPMFqcBaczLniCKlXZI4a_7rPJWTHJEDHlyBF1QgW2rMd--LE8effyH_8A1xryuQ?type=png)](https://mermaid.live/edit#pako:eNptk02PmzAQhv8Kmr20WhIxtrGxD710r731VHFBxWzQ8hERUHcb5b93MBiMujnleewZ5h3Jd_jdlxYMvA7F9RL9fMm7iH74JQfM8-4ko2fM4etiGVk2W0ZWbJqT5utlxjYtSItZo6Lru0_Jp85r8snmJXnpuifk1eYVeeXv7zojnc2aLNu7aNLa3ebURW4ekzlS4k7YYU50YV1azOhkP5jzogssoud093Ng5L5gXwTOkdFlVuGoGJ1O3yIRAn0vJH6g9SZzlK1b-x8ozbK4hUJQ6-rCIu2AhZCGIENQIRwaaL_PT8hP5NGHxHBCPK6DhWOtJA-UHWjbFT8ULuTPxCfkh7uNH42lMFXdNOap0lV8G4f-zZonzvn6__SnLseLEdd3iOlp1CWYcZhsDK0d2mJGuM_dchgvtrU5GPpb2qqYmjGHvHtQ2bXofvV96yuHfnq9gKmK5kY0XctitC91Qe-u3exgu9IO3_upG8FgmrkmYO7wTqjTM6KSMkkZEzLRIoYPMFqcBaczLniCKlXZI4a_7rPJWTHJEDHlyBF1QgW2rMd--LE8effyH_8A1xryuQ)
+
+The train network above can be solved by the algorithm in `53` steps (a step is when the train changes stations, when a track is popped off the queue).
+
+<details>
+
+<summary>Input:</summary>
+
+```
+14 29
+1 6 1
+2 2 14
+3 6 22
+4 17 12
+5 19 10
+6 20 17
+7 19 7
+8 9 20
+9 13 16
+10 12 22
+11 18 2
+12 4 5
+13 18 4
+14 7 7
+1 4
+1 11
+1 13
+1 14
+2 8
+5 8
+5 10
+6 1
+6 7
+7 8
+9 2
+9 5
+9 6
+9 7
+9 8
+9 9
+10 9
+10 10
+10 11
+11 1
+11 4
+12 2
+12 6
+12 8
+12 13
+13 2
+13 3
+14 3
+14 10
+9
+```
+
+</details>
+
+<details>
+<summary>Output:</summary>
+
+
+```
+9 16 10 22 17 1 7 2
+6 16 10 22 17 1 7 2
+7 16 17 10 22 1 7 2
+5 16 10 22 17 1 7 2
+2 16 17 1 4 10 22 7 2
+8 16 17 7 10 14 22 1 4 2
+1 16 17 1 10 22 2 7
+10 16 10 22 17 1 7 2
+14 16 17 1 10 22 2 7
+13 16 17 1 10 22 2 7
+4 16 17 1 10 22 2 7
+11 16 17 1 10 22 7 2
+3 16 17 1 7 4 10 22 2
+Steps: 53
+```
+
+</details>
+
 ## Behind the Code
 
 The core solver uses a `LookupQueue` for efficient processing.

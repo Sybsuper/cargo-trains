@@ -13,4 +13,38 @@ data class Problem(
      * The station where the train starts with an empty load.
      */
     val startingStation: Int
-)
+) {
+    fun toMermaidString(): String {
+        return buildString {
+            appendLine("graph TD")
+            stations.keys.sorted().forEach { id ->
+                val (unload, load) = stations[id]!!
+                appendLine("    $id(\"$id\\n-$unload +$load\")")
+            }
+            tracks.keys.sorted().forEach { from ->
+                tracks[from]?.sorted()?.forEach { to ->
+                    appendLine("    $from --> $to")
+                }
+            }
+            appendLine("    style $startingStation fill:#f9f,stroke:#333,stroke-width:4px")
+        }
+    }
+
+    fun toInputString(): String {
+        return buildString {
+            val s = stations.size
+            val t = tracks.values.sumOf { it.size }
+            appendLine("$s $t")
+            stations.keys.sorted().forEach { id ->
+                val (unload, load) = stations[id]!!
+                appendLine("$id $unload $load")
+            }
+            tracks.keys.sorted().forEach { from ->
+                tracks[from]?.sorted()?.forEach { to ->
+                    appendLine("$from $to")
+                }
+            }
+            appendLine("$startingStation")
+        }
+    }
+}
