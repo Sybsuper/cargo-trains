@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.3.0"
+    application
 }
 
 group = "com.sybsuper"
@@ -19,4 +20,12 @@ kotlin {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.run {
+    standardInput = System.`in`
+}
+
+application {
+    mainClass.set("com.sybsuper.MainKt")
 }
