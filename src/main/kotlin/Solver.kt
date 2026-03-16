@@ -50,10 +50,11 @@ class Solver(val problem: Problem) {
 
         val neighbours = tracks[current] ?: return
         if (deltaOutgoing.isEmpty()) {
-            // make sure each track at least once even with an empty loaded train
+            // make sure each track is visited at least once even with an empty loaded train
             for (neighbour in neighbours) {
-                if (current to neighbour in visitedTracks) continue
-                queue.add(current to neighbour)
+                val track = current to neighbour
+                if (track in visitedTracks) continue
+                queue.add(track)
             }
             return
         }
